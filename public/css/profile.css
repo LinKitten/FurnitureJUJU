@@ -1,0 +1,102 @@
+html,body { color: #333; margin: 0;height: 100%;font-family: "Myriad Set Pro","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;font-weight: normal;}
+body {background: #f2f2f2;color: #666;width:100%;max-width:512px; margin:0 auto;font-size:12px; line-height:24px;}
+*{margin: 0;padding: 0;}
+a {text-decoration: none;color: #08acee;}
+img {border: 0;}
+li {list-style: none;}
+a {color: #666;}
+
+.clear{clear:both;}
+.h50{ width:100%; height:50px; overflow:hidden}
+
+.headerbox{width:100%; max-width:512px; margin:0 auto;  }
+.headerbox .header{height:50px;position:fixed;width:100%;max-width:512px;top:0;z-index:9999;border-bottom:1px solid #eee;background:#fff}
+.headerbox .header .headerL{ position:absolute; left:0; top:0; height:50px; padding-left:15px;}
+.headerbox .header .headerL img{ display:block;height:22px;padding-top:14px;}
+.headerbox .header .headerC{ width:100%; height:50px; line-height:50px; text-align:center}
+.headerbox .header .headerC p{ text-align:center; font-size:16px; color:#333; letter-spacing:1px}
+.headerbox .header .headerR{position:absolute; right:0; top:0; height:50px; padding-right:15px;}
+.headerbox .header .headerR img{ display:block;height:24px;padding-top:13px;}
+.headerbox .header .headerR{position:absolute; right:0; top:0; height:50px; padding-right:15px;}
+.headerbox .header .headerR a{ color:#fff; font-size:12px; line-height:50px}
+.headerbox .header .headerC0{ width:75%; margin:0 auto; height:50px; line-height:50px; text-align:center;;}
+.headerbox .header .headerC0 .ssdiv{ display:block; width:100%; height:34px; margin:8px 0; background:#f7f7f7; border-radius:4px}
+.headerbox .header .headerC0 .ssdiv input{ float:left; width:80%; border:0; outline:none; height:34px; line-height:34px; color:#999; font-size:14px; background:none; letter-spacing:1px;}
+.headerbox .header .headerC0 .ssdiv img{ float:left; height:24px; margin:5px}
+
+
+.user{
+    padding: 50px;
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 0 10px #ccc;
+    margin-bottom: 5px;
+}
+.user .user-image{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.user img{
+    width: 100%;
+    height: 100%;
+}
+
+.form{
+    width: 100%;
+    padding-bottom: 20px;
+    background-color: #fff;
+}
+
+.form .item{
+    margin: 0 10px;
+    padding: 20px 0;
+    display: flex;
+}
+
+.form .item .title{
+    /* font-size: 20px; */
+    color: #666;
+    width: 65px;
+    text-align: right;
+}
+
+.form .item input[type="text"]{
+    border: none;
+    outline: none;
+    width: 80%;
+}
+
+.sex{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+.sex label{
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+textarea{
+    border: none;
+    outline: none;
+}
+
+textarea::placeholder{
+    padding-top: 5px;
+    color: -internal-light-dark(black, white);
+}
+
+input[type="submit"]{
+    width: 200px;
+    height: 35px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    background: #1871f8;
+    border-radius: 10px;
+    border: none;
+}
