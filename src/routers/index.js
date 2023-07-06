@@ -3,10 +3,14 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 //引入组件
 import Home from '@/components/home.vue'
+import Typelist from '@/components/typelist.vue'
 import BusinessIndex from '@/components/business/index.vue'
 import BusinessProfile from '@/components/business/profile.vue'
 import BusinessEmail from '@/components/business/email.vue'
-import BusinessAddress from '@/components/business/address.vue'
+import BusinessRecord from '@/components/business/record.vue'
+import AddressIndex from '@/components/business/address/index.vue'
+import AddressAdd from '@/components/business/address/add.vue'
+import AddressEdit from '@/components/business/address/edit.vue'
 import Login from '@/components/login.vue'
 import Register from '@/components/register.vue'
 
@@ -22,6 +26,12 @@ export default createRouter({
             path: '/',
             name: 'home',
             component: Home,
+        },
+        {
+            //分类
+            path: '/typelist',
+            name: 'Typelist',
+            component: Typelist,
         },
         { //登录页面
             path: '/login',
@@ -57,10 +67,34 @@ export default createRouter({
                 Islogin: true,
             }
         },
-        {  //收获地址
-            path: '/business/address',
-            name: 'BusinessAddress',
-            component: BusinessAddress,
+        {  //收货地址
+            path: '/business/address/index',
+            name: 'AddressIndex',
+            component: AddressIndex,
+            meta: {
+                Islogin: true,
+            }
+        },
+        {  //新增收货地址
+            path: '/business/address/add',
+            name: 'AddressAdd',
+            component: AddressAdd,
+            meta: {
+                Islogin: true,
+            }
+        },
+        {  //编辑收货地址
+            path: '/business/address/edit',
+            name: 'AddressEdit',
+            component: AddressEdit,
+            meta: {
+                Islogin: true,
+            }
+        },
+        {  //编辑收货地址
+            path: '/business/record',
+            name: 'BusinessRecord',
+            component: BusinessRecord,
             meta: {
                 Islogin: true,
             }
