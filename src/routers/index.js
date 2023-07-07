@@ -3,7 +3,8 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 //引入组件
 import Home from '@/components/home.vue'
-import Typelist from '@/components/typelist.vue'
+import ProductList from '@/components/product/list.vue'
+import ProductInfo from '@/components/product/info.vue'
 import BusinessIndex from '@/components/business/index.vue'
 import BusinessProfile from '@/components/business/profile.vue'
 import BusinessEmail from '@/components/business/email.vue'
@@ -27,11 +28,15 @@ export default createRouter({
             name: 'home',
             component: Home,
         },
-        {
-            //分类
-            path: '/typelist',
-            name: 'Typelist',
-            component: Typelist,
+        { //分类列表
+            path: '/product/list', 
+            name: 'ProductList',
+            component: ProductList, 
+        },
+        { //商品详情
+            path: '/product/info', 
+            name: 'ProductInfo',
+            component: ProductInfo, 
         },
         { //登录页面
             path: '/login',
