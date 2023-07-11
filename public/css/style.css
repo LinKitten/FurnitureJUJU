@@ -135,7 +135,7 @@ ul.proul li .price{ height:20px; padding:5px 10px 10px; overflow:hidden}
 ul.proul li .price p{color:#fe7923; float:left; font-size:16px;}
 ul.proul li .price p span{ font-size:12px; color:#bbb; padding-left:10px; text-decoration:line-through}
 
-.detailbox{ padding:15px; overflow:hidden}
+.detailbox{ padding:10px; overflow:hidden}
 .detailbox h4{ color:#000; font-size:14px;font-weight: 400; line-height:1.5}
 .detailbox .price{ color:#fe7923; font-size: 20px;font-weight: bold; padding-top:10px}
 .detailbox .price em{font-size: 12px;font-style: normal; margin-right:5px}

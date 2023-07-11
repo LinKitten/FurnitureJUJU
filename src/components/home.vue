@@ -21,7 +21,7 @@
   <van-swipe :autoplay="3000" :height="200" lazy-render>
     <van-swipe-item v-for="item in banner">
       <router-link :to="{ path: '/product/info', query: { proid: item.id } }">
-        <img :src="item.thumbs_text" />
+        <img :src="item.bannerimg_text" />
       </router-link>
     </van-swipe-item>
   </van-swipe>
@@ -54,11 +54,12 @@
   <!--新品 广告 -->
   <van-swipe :autoplay="3000" :height="200" lazy-render>
     <van-swipe-item v-for="item in news">
-      <img :src="item.thumbs_text" />
+      <img :src="item.bannerimg_text" />
     </van-swipe-item>
   </van-swipe>
 
   <div class="clear"></div>
+  <!-- 热销 -->
   <ul class="proul">
     <li v-for="item in hots">
       <div class="con">
@@ -69,7 +70,8 @@
       </div>
     </li>
   </ul>
-  <Menu></Menu>
+
+    <Menu></Menu>
 </template>
 
 <script setup>

@@ -159,8 +159,8 @@ let ByList = [
 
 // 分类
 const TypeToggle = async (value) => {
-  TypeActive.values= value;
-  console.log( TypeActive.values );
+  TypeActive.values = value;
+  console.log(TypeActive.values);
   refresh();
 };
 
@@ -206,7 +206,7 @@ const refresh = async () => {
 
 //上拉加载触发
 const onload = async () => {
-//   console.log(222);
+  //   console.log(222);
   // 更改状态
   if (refreshing.value) {
     refreshing.value = false;
@@ -231,24 +231,29 @@ const ListData = async () => {
     url: "/index/list",
     params: data,
   });
+  console.log(result);
+  
+  if (result) {
+    loading.value = false;
+    //  更新加载状态
 
-  //  更新加载状态
-  loading.value = false;
+    //   获取分类名
+    TypeName.value = result.data.TypeName;
 
-  //   获取分类名
-  TypeName.value = result.data.TypeName;
-
-  if (result.code == 0 || result.data.list.length <= 0) {
-    finished.value = true;
+    if (result.code == 0 || result.data.list.length <= 0) {
+      finished.value = true;
+    } else {
+      list.value = list.value.concat(result.data.list);
+      page.value++;
+    }
   } else {
-    list.value = list.value.concat(result.data.list);
-    page.value++;
+    return;
   }
 };
 
 //请求分类
 const type = async () => {
-//   console.log(111);
+
   var result = await POST({
     url: "/index/type",
   });
@@ -271,9 +276,6 @@ onBeforeMount(() => {
 var onClickLeft = () => {
   router.go(-1);
 };
-
-
 </script>
 
-<style>
-</style>
+<style></style>

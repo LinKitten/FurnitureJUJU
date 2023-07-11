@@ -3,6 +3,9 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 //引入组件
 import Home from '@/components/home.vue'
+import OrderIndex from '@/components/order/index.vue'
+import CartIndex from '@/components/cart/index.vue'
+import CartConfirm from '@/components/cart/confirm.vue'
 import ProductList from '@/components/product/list.vue'
 import ProductInfo from '@/components/product/info.vue'
 import BusinessIndex from '@/components/business/index.vue'
@@ -29,14 +32,14 @@ export default createRouter({
             component: Home,
         },
         { //分类列表
-            path: '/product/list', 
+            path: '/product/list',
             name: 'ProductList',
-            component: ProductList, 
+            component: ProductList,
         },
         { //商品详情
-            path: '/product/info', 
+            path: '/product/info',
             name: 'ProductInfo',
-            component: ProductInfo, 
+            component: ProductInfo,
         },
         { //登录页面
             path: '/login',
@@ -100,6 +103,29 @@ export default createRouter({
             path: '/business/record',
             name: 'BusinessRecord',
             component: BusinessRecord,
+            meta: {
+                Islogin: true,
+            }
+        },
+        {  //购物车列表
+            path: '/cart/index',
+            name: 'CartIndex',
+            component: CartIndex,
+            meta: {
+                Islogin: true,
+            }
+        },
+        {  //购物车列表
+            path: '/cart/confirm',
+            name: 'CartConfirm',
+            component: CartConfirm,
+            meta: {
+                Islogin: true,
+            }
+        }, {  //订单列表
+            path: '/order/index',
+            name: 'OrderIndex',
+            component: OrderIndex,
             meta: {
                 Islogin: true,
             }

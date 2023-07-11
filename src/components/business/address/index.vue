@@ -8,6 +8,16 @@
   />
   <div>
     <van-address-list
+      v-if="action == 'addresstoggle'"
+      v-model="chosenAddressId"
+      :list="addressList"
+      default-tag-text="默认"
+      @add="onAdd"
+      @edit="onEdit"
+      @select="addresstoggle"
+    />
+    <van-address-list
+      v-else
       v-model="chosenAddressId"
       :list="addressList"
       default-tag-text="默认"
@@ -23,7 +33,7 @@ import { onBeforeMount, reactive, ref } from "vue";
 // 轻提醒
 import { showSuccessToast, showFailToast } from "vant";
 // 引入router
-import { useRouter } from "vue-router";
+import { useRouter,useRoute } from "vue-router";
 // 引入cookie
 import { useCookies } from "vue3-cookies";
 
@@ -33,6 +43,7 @@ import { POST, UPLOAD } from "@/services/request";
 const { cookies } = useCookies();
 // 初始化路由 (返回当前的路由地址)
 var router = useRouter();
+var route = useRoute();
 
 // 获取用户
 var business = cookies.get("business") ? cookies.get("business") : {};
@@ -41,6 +52,10 @@ var business = cookies.get("business") ? cookies.get("business") : {};
 const addressList = reactive([]);
 const chosenAddressId = ref(""); //被选中的id
 
+
+//获取自定义的参数
+var action = route.query.hasOwnProperty("action") ? route.query.action : "";
+action = ref(action);
 // 挂载前发送请求拿到数据
 onBeforeMount(async () => {
   const result = await POST({
@@ -50,7 +65,6 @@ onBeforeMount(async () => {
     },
   });
 
-  
   if (result.code == 0 || result.data.length <= 0) {
     showFailToast(result.msg);
     return false;
@@ -73,7 +87,7 @@ onBeforeMount(async () => {
     });
   });
 
-  console.log(addressList);
+  // console.log(addressList);
 });
 
 const onAdd = () => {
@@ -86,38 +100,42 @@ const onEdit = (item, index) => {
 };
 
 // 选中地址触发 (选中便默认)
+const select = async (item, index) => {
+  //封装数据
+  var data = {
+    busid: business.id,
+    id: item.id,
+  };
 
-// const select = async (item, index) =>
-//   {
-//     //封装数据
-//     var data = {
-//       busid: business.id,
-//       id: item.id
-//     }
+  //发请求
+  var result = await POST({
+    url: "/address/toggle",
+    params: data,
+  });
 
-//     //发请求
-//     var result = await POST({
-//       url: '/address/toggle',
-//       params: data
-//     })
+  //更新失败
+  if (result.code == 0) {
+    showFailToast(result.msg);
+    return false;
+  }
 
-//     //更新失败
-//     if(result.code == 0)
-//     {
-//       showFailToast(result.msg)
-//       return false
-//     }
+  //切换默认标签
+  chosenAddressId.value = item.id;
 
-//     //切换默认标签
-//     chosenAddressId.value = item.id
+  //清除全部的默认选中
+  addressList.map((item) => {
+    item.isDefault = false;
+  });
 
-//     //清除全部的默认选中
-//     addressList.map((item) => {
-//       item.isDefault = false
-//     })
+  addressList[index].isDefault = true;
+};
 
-//     addressList[index].isDefault = true
-//   }
+// 从订单页面过来的  切换地址
+const addresstoggle = async (item, index) => {
+  console.log(111);
+  cookies.set("address", item.id);
+  router.go(-1);
+};
 
 // 返回上一历史
 var onClickLeft = () => {

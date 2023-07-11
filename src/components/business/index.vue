@@ -36,7 +36,7 @@
     label="我的收货地址"
     to="/business/address/index"
   />
-  <van-field v-model="fieldValue" is-link readonly label="我的订单" to="/" />
+  <van-field v-model="fieldValue" is-link readonly label="我的订单" to="/order/index" />
   <van-field v-model="fieldValue" is-link readonly label="消费记录" to="/business/record" />
   <van-field v-model="fieldValue" is-link readonly label="充值记录" to="/" />
   <van-field
