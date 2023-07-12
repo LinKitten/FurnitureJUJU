@@ -22,7 +22,7 @@
           size="large"
           title="消费金额"
           :value="item.total"
-        />x
+        />
         <van-cell
           :border="false"
           title="消费描述"

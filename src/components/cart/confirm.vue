@@ -209,6 +209,7 @@ const onSubmit = async () => {
 var onClickLeft = () => {
   router.go(-1);
 };
+
 </script>
 
 <style>

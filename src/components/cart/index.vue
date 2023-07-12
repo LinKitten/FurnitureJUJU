@@ -7,8 +7,11 @@
     <van-nav-bar
       :title="count"
       left-text="返回"
+      right-text="取消"
       left-arrow
       @click-left="onClickLeft"
+      @click-right="onClickRight"
+
     >
     </van-nav-bar>
   </van-sticky>
@@ -310,6 +313,10 @@ onBeforeMount(async () => {
 var onClickLeft = () => {
   router.go(-1);
 };
+// 取消  回到home页面
+var onClickRight =()=>{
+  router.push("/");
+}
 </script>
 
 <style>
