@@ -4,6 +4,11 @@ import { createRouter, createWebHashHistory } from "vue-router";
 //引入组件
 import Home from '@/components/home.vue'
 import OrderIndex from '@/components/order/index.vue'
+import OrderExpress from '@/components/order/express.vue'
+import OrderInfo from '@/components/order/info.vue'
+import OrderComment from '@/components/order/comment.vue'
+import OrderBackgoods from '@/components/order/backgoods.vue'
+import Expressquery from '@/components/order/expressquery.vue'
 import CartIndex from '@/components/cart/index.vue'
 import CartConfirm from '@/components/cart/confirm.vue'
 import ProductList from '@/components/product/list.vue'
@@ -126,6 +131,47 @@ export default createRouter({
             path: '/order/index',
             name: 'OrderIndex',
             component: OrderIndex,
+            meta: {
+                Islogin: true,
+            }
+        },
+        {  //查看物流
+            path: '/order/express',
+            name: 'OrderExpress',
+            component: OrderExpress,
+            meta: {
+                Islogin: true,
+            }
+        },
+        {  //订单详情
+            path: '/order/info',
+            name: 'OrderInfo',
+            component: OrderInfo,
+            meta: {
+                Islogin: true,
+            }
+        },
+        {  //订单评价
+            path: '/order/comment',
+            name: 'OrderComment',
+            component: OrderComment,
+            meta: {
+                Islogin: true,
+            }
+        },
+        
+        {  //退货
+            path: '/order/backgoods',
+            name: 'OrderBackgoods',
+            component: OrderBackgoods,
+            meta: {
+                Islogin: true,
+            }
+        },
+        {  //退货
+            path: '/order/expressquery',
+            name: 'Expressquery',
+            component: Expressquery,
             meta: {
                 Islogin: true,
             }
