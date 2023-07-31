@@ -77,7 +77,7 @@
   <div class="likebox">
     <div class="tit">•●●<span>猜你喜欢</span>●●•</div>
     <ul class="proul">
-      <li v-for="item in recommend">
+      <li v-for="item in recommend" class="procart">
         <div class="con">
           <router-link
             :to="{ path: '/product/info', query: { proid: item.id } }"
@@ -356,8 +356,9 @@ var onClickRight =()=>{
 .van-card__price-integer {
   color: darkslateblue;
 }
-.proul {
-  width: 95%;
-  margin: 10px auto;
+
+.proul .procart{
+  width: 47%;
+  border-radius: 10px;
 }
 </style>

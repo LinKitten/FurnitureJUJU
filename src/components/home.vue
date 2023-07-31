@@ -61,7 +61,7 @@
   <div class="clear"></div>
   <!-- 热销 -->
   <ul class="proul">
-    <li v-for="item in hots">
+    <li v-for="item in hots" class="procart">
       <div class="con">
         <router-link :to="{ path: '/product/info', query: { proid: item.id } }">
           <img :src="item.thumbs_text" />
@@ -108,5 +108,9 @@ onBeforeMount(async () => {
 </script>
 
 <style>
+.proul .procart{
+  width: 47%;
+  border-radius: 10px;
+}
 </style>
 

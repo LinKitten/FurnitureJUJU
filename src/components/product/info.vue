@@ -25,11 +25,8 @@
   />
   <!-- 商品图 -->
   <van-swipe :autoplay="4000" lazy-render>
-    <van-swipe-item>
-      <img style="width: 100%" :src="product.thumbs_text" />
-    </van-swipe-item>
-    <van-swipe-item>
-      <img style="width: 100%" :src="product.thumbs_text" />
+    <van-swipe-item v-for="thumb in product.thumbs_list">
+      <img style="width: 100%" :src="thumb" />
     </van-swipe-item>
   </van-swipe>
 
@@ -68,7 +65,7 @@
     />
     <van-action-bar-icon icon="cart-o" text="购物车" v-else />
     <van-action-bar-button type="warning" text="加入购物车" @click="CartAdd" />
-    <van-action-bar-button type="danger" text="立即购买" />
+    <van-action-bar-button type="danger" text="立即购买"  @click="BuyNow"/>
   </van-action-bar>
 </template>
 
@@ -203,6 +200,17 @@ const share = async (options) => {
   console.log(options);
 };
 
+// 立即购买
+const BuyNow = ()=>{
+
+  //需要传递被选中的商品id
+  router.push({
+    path: "/cart/confirm",
+    query: {
+      proid: proid,
+    },
+  });
+}
 // 挂载前加载数据
 onBeforeMount(async () => {
   productList();

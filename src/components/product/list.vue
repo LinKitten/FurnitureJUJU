@@ -65,7 +65,7 @@
       @load="onload"
     >
       <ul class="proul">
-        <li v-for="item in list">
+        <li v-for="item in list" class="procart">
           <router-link
             :to="{ path: '/product/info', query: { proid: item.id } }"
             ><img :src="item.thumbs_text"
@@ -278,4 +278,9 @@ var onClickLeft = () => {
 };
 </script>
 
-<style></style>
+<style>
+.proul .procart{
+  width: 47%;
+  border-radius: 10px;
+}
+</style>
