@@ -8,9 +8,12 @@
     <div class="L">{{ site }}</div>
     <div class="C">
       <div class="saerchbox">
-        <input name="" type="text" placeholder="请输入您要搜索的内容" /><img
+        <router-link :to="{ path: '/product/list', query: { isshow: true} }">
+          <input name="" type="text" placeholder="请输入您要搜索的内容"  /><img
           src="/images/ss.png"
         />
+        </router-link>
+      
       </div>
     </div>
     <div class="R"><img src="/images/tr.png" /></div>
@@ -34,7 +37,7 @@
       <li>
         <!-- 全部商品 -->
         <router-link to="/product/list">
-          <img src="/images/icon_5.png" />
+          <img src="/images/all.png" />
           <p>全部分类</p>
         </router-link>
       </li>

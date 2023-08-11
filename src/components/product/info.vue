@@ -3,12 +3,7 @@
 
   <van-sticky>
     <!-- 导航栏 -->
-    <van-nav-bar
-      :title="product.name"
-      left-text="返回"
-      left-arrow
-      @click-left="onClickLeft"
-    >
+    <van-nav-bar :title="product.name" left-text="返回" left-arrow @click-left="onClickLeft">
       <!-- 点击弹出分享面板 -->
       <template #right>
         <van-icon name="ellipsis" size="18" @click="showShare = true" />
@@ -16,13 +11,7 @@
     </van-nav-bar>
   </van-sticky>
   <!-- 分享面板 -->
-  <van-share-sheet
-    v-model:show="showShare"
-    title="立即分享给好友"
-    :options="options"
-    round
-    @select="share"
-  />
+  <van-share-sheet v-model:show="showShare" title="立即分享给好友" :options="options" round @select="share" />
   <!-- 商品图 -->
   <van-swipe :autoplay="4000" lazy-render>
     <van-swipe-item v-for="thumb in product.thumbs_list">
@@ -34,14 +23,14 @@
   <div class="detailbox">
     <h4>{{ product.name }}</h4>
     <van-row justify="space-between">
-      <van-col span="8"
-        ><div class="price"><b>￥</b>{{ product.price }}</div>
+      <van-col span="8">
+        <div class="price"><b>￥</b>{{ product.price }}</div>
       </van-col>
-      <van-col span="8"
-        ><div class="ku">
+      <van-col span="8">
+        <div class="ku">
           库存：{{ product.stock }} {{ product.unit ? product.unit.name : "" }}
-        </div></van-col
-      >
+        </div>
+      </van-col>
     </van-row>
   </div>
 
@@ -56,16 +45,10 @@
   <!-- 动作栏 加入购物车  -->
   <van-action-bar>
     <van-action-bar-icon icon="chat-o" text="客服" dot @click="CallTel" />
-    <van-action-bar-icon
-      icon="cart-o"
-      text="购物车"
-      color="#ee0a24"
-      :badge="count"
-      v-if="count > 0"
-    />
+    <van-action-bar-icon icon="cart-o" text="购物车" color="#ee0a24" :badge="count" v-if="count > 0" @click="gocart" />
     <van-action-bar-icon icon="cart-o" text="购物车" v-else />
     <van-action-bar-button type="warning" text="加入购物车" @click="CartAdd" />
-    <van-action-bar-button type="danger" text="立即购买"  @click="BuyNow"/>
+    <van-action-bar-button type="danger" text="立即购买" @click="BuyNow" />
   </van-action-bar>
 </template>
 
@@ -124,7 +107,7 @@ const CallTel = async () => {
     .then(() => {
       location.href = `tel:${mobile.value}`;
     })
-    .catch(() => {});
+    .catch(() => { });
 };
 // 添加购物车
 const CartAdd = async () => {
@@ -201,7 +184,7 @@ const share = async (options) => {
 };
 
 // 立即购买
-const BuyNow = ()=>{
+const BuyNow = () => {
 
   //需要传递被选中的商品id
   router.push({
@@ -220,6 +203,11 @@ onBeforeMount(async () => {
 var onClickLeft = () => {
   router.go(-1);
 };
+
+// 前往购物车
+const gocart = () => {
+  router.push("/cart/index");
+}
 </script >
 
 <style>

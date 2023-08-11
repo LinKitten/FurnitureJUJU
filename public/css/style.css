@@ -1308,7 +1308,8 @@ ul.proul li .price p span {
 .myBox {
     overflow: hidden;
     padding: 30px 15px;
-    background: #fff
+    /* background: #fff */
+    background: linear-gradient(to bottom right, #0000ff00 65%, #2c2cf6);
 }
 
 .myBox .L {

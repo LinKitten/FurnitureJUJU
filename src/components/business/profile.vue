@@ -4,8 +4,8 @@
     <van-nav-bar title="基本资料" left-text="返回" left-arrow @click-left="onClickLeft" />
     <div>
         <!-- 组件默认提交 -->
-        <van-form @submit="eidtProfile" style="margin-top: 10px;">
-            <van-cell-group inset>
+        <van-form @submit="eidtProfile" style="margin-top: 20px;">
+            <van-cell-group inset class="group">
                 <!-- 头像 -->
                 <van-field name="avatar">
                     <template #input>
@@ -213,5 +213,8 @@ var onClickLeft = () => {
     align-items: center;
     min-height: var(--van-cell-line-height);
     justify-content: center;
+}
+.group{
+    padding: 20px 0px;
 }
 </style>

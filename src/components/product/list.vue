@@ -3,12 +3,7 @@
 
   <van-sticky>
     <!-- 导航栏 -->
-    <van-nav-bar
-      :title="TypeName"
-      left-text="返回"
-      left-arrow
-      @click-left="onClickLeft"
-    >
+    <van-nav-bar :title="TypeName" left-text="返回" left-arrow @click-left="onClickLeft">
       <!-- 点击弹出搜索框 -->
       <template #right>
         <van-icon name="search" size="18" @click="SearchShow = true" />
@@ -17,62 +12,32 @@
     <!-- 弹出层 -->
     <van-popup v-model:show="SearchShow" position="top">
       <!-- 搜索框 -->
-      <van-search
-        @search="search"
-        v-model="keywords"
-        placeholder="请输入搜索关键词"
-      />
+      <van-search @search="search" v-model="keywords" placeholder="请输入搜索关键词" />
     </van-popup>
 
     <!-- 下拉菜单 筛选  -->
     <van-dropdown-menu>
       <!-- 分类 -->
-      <van-dropdown-item
-        v-model="TypeActive"
-        :options="TypeList"
-        @change="TypeToggle"
-      />
+      <van-dropdown-item v-model="TypeActive" :options="TypeList" @change="TypeToggle" />
       <!-- 商品状态 -->
-      <van-dropdown-item
-        v-model="FlagActive"
-        :options="FlagList"
-        @change="FlagToggle"
-      />
+      <van-dropdown-item v-model="FlagActive" :options="FlagList" @change="FlagToggle" />
       <!-- 时间、库存、价格 -->
-      <van-dropdown-item
-        v-model="SortActive"
-        :options="SortList"
-        @change="SortToggle"
-      />
+      <van-dropdown-item v-model="SortActive" :options="SortList" @change="SortToggle" />
       <!-- 排序 -->
-      <van-dropdown-item
-        v-model="ByActive"
-        :options="ByList"
-        @change="ByToggle"
-      />
+      <van-dropdown-item v-model="ByActive" :options="ByList" @change="ByToggle" />
     </van-dropdown-menu>
   </van-sticky>
 
   <!-- 商品利列表  pullRef下拉刷新 list上拉加载-->
 
   <van-pull-refresh v-model="refreshing" @refresh="refresh">
-    <van-list
-      v-model:loading="loading"
-      :finished="finished"
-      :offset="5"
-      :immediate-check="false"
-      finished-text="没有更多了"
-      @load="onload"
-    >
+    <van-list v-model:loading="loading" :finished="finished" :offset="5" :immediate-check="false" finished-text="没有更多了"
+      @load="onload">
       <ul class="proul">
         <li v-for="item in list" class="procart">
-          <router-link
-            :to="{ path: '/product/info', query: { proid: item.id } }"
-            ><img :src="item.thumbs_text"
-          /></router-link>
-          <router-link
-            :to="{ path: '/product/info', query: { proid: item.id } }"
-          >
+          <router-link :to="{ path: '/product/info', query: { proid: item.id } }"><img
+              :src="item.thumbs_text" /></router-link>
+          <router-link :to="{ path: '/product/info', query: { proid: item.id } }">
             <p class="tit">{{ item.name }}</p>
           </router-link>
           <div class="price">
@@ -107,6 +72,8 @@ const route = useRoute();
 let TypeActive = route.query.hasOwnProperty("typeid") ? route.query.typeid : 0;
 TypeActive = parseInt(TypeActive);
 TypeActive = ref(TypeActive); //响应式数据
+// 获取从首页搜索框获取到的值
+let isshow = route.query.hasOwnProperty("isshow") ? true: false;
 
 let list = ref([]); // 列表数据
 
@@ -127,6 +94,7 @@ let SortActive = ref("createtime");
 let ByActive = ref("desc");
 // 弹出搜索框状态
 let SearchShow = ref(false);
+SearchShow.value =isshow;
 // 搜素关键词
 let keywords = ref("");
 
@@ -232,7 +200,7 @@ const ListData = async () => {
     params: data,
   });
   console.log(result);
-  
+
   if (result) {
     loading.value = false;
     //  更新加载状态
@@ -279,7 +247,7 @@ var onClickLeft = () => {
 </script>
 
 <style>
-.proul .procart{
+.proul .procart {
   width: 47%;
   border-radius: 10px;
 }

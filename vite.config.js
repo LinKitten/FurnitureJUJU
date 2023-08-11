@@ -13,7 +13,9 @@ export default defineConfig({
     // 设置接口请求代理
     proxy: {
       '/shop': {
-        target: "http://www.fast.com/shop",
+        
+        // target: "http://www.fast.com/shop",//本地地址
+        target: "https://admin.kittenlin.com/shop",
         changeOrigin: true,//允许跨域
         rewrite: (path) => path.replace(/^\/shop/, ''), //替换/shop前缀，放防止多个api接口
       }
